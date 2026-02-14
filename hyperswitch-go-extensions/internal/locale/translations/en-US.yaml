@@ -1,0 +1,34 @@
+# English (US) Translations
+checkout.title: "Checkout"
+checkout.pay_button: "Pay Now"
+checkout.cancel_button: "Cancel"
+checkout.security_note: "Your payment information is encrypted and secure"
+checkout.terms: "By continuing, you agree to our Terms and Conditions"
+
+# Error messages
+error.invalid_card: "Invalid card number"
+error.card_declined: "Card declined. Please try another card."
+error.insufficient_funds: "Insufficient funds"
+error.network_error: "Network error. Please try again."
+error.invalid_cvv: "Invalid CVV/CVC code"
+error.invalid_expiry: "Invalid expiry date"
+
+# Payment methods
+payment_method.card: "Credit/Debit Card"
+payment_method.apple_pay: "Apple Pay"
+payment_method.google_pay: "Google Pay"
+payment_method.paypal: "PayPal"
+
+# Subscription
+subscription.trial_days: "{count} day trial"
+subscription.monthly: "Monthly"
+subscription.yearly: "Yearly"
+subscription.cancel: "Cancel subscription"
+subscription.renews_on: "Renews on {date}"
+
+# Common
+common.loading: "Loading..."
+common.submit: "Submit"
+common.cancel: "Cancel"
+common.confirm: "Confirm"
+common.close: "Close"

@@ -664,6 +664,8 @@ pub async fn perform_static_routing_v1(
     Option<common_enums::RoutingApproach>,
 )> {
     logger::debug!("euclid_routing: performing routing for connector selection");
+    
+    // Helper function remains for use within decision engine routing
     let get_merchant_fallback_config = || async {
         #[cfg(feature = "v1")]
         return routing::helpers::get_merchant_default_config(
@@ -684,8 +686,15 @@ pub async fn perform_static_routing_v1(
     let algorithm_id = if let Some(id) = algorithm_id {
         id
     } else {
-        logger::debug!("euclid_routing: active algorithm isn't present, default falling back");
-        return Ok((fallback_config, None));
+        logger::debug!("euclid_routing: active algorithm isn't present, returning eligible fallback connectors");
+        // FIXED: Apply eligibility analysis before returning fallback
+        let eligible_fallback = routing::helpers::get_eligible_fallback_connectors(
+            state,
+            business_profile,
+            transaction_data,
+        )
+        .await?;
+        return Ok((eligible_fallback, None));
     };
 
     let cached_algorithm = match ensure_algorithm_cached_v1(
@@ -701,12 +710,19 @@ pub async fn perform_static_routing_v1(
         Err(err) => {
             logger::error!(
                 error=?err,
-                "euclid_routing: ensure_algorithm_cached failed, falling back to merchant default connectors"
+                "euclid_routing: ensure_algorithm_cached failed, falling back to eligible merchant default connectors"
             );
 
-            return Ok((fallback_config, None));
+            // FIXED: Apply eligibility analysis before returning fallback
+            let eligible_fallback = routing::helpers::get_eligible_fallback_connectors(
+                state,
+                business_profile,
+                transaction_data,
+            )
+            .await?;
+            return Ok((eligible_fallback, None));
         }
-    };
+    ;
 
     let backend_input = match transaction_data {
         routing::TransactionData::Payment(payment_data) => make_dsl_input(payment_data)?,

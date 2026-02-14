@@ -1,0 +1,34 @@
+# Spanish (Spain) Translations
+checkout.title: "Pagar"
+checkout.pay_button: "Pagar ahora"
+checkout.cancel_button: "Cancelar"
+checkout.security_note: "Tu información de pago está cifrada y segura"
+checkout.terms: "Al continuar, aceptas nuestros Términos y Condiciones"
+
+# Error messages
+error.invalid_card: "Número de tarjeta inválido"
+error.card_declined: "Tarjeta rechazada. Por favor, prueba con otra tarjeta."
+error.insufficient_funds: "Fondos insuficientes"
+error.network_error: "Error de red. Por favor, inténtalo de nuevo."
+error.invalid_cvv: "Código CVV/CVC inválido"
+error.invalid_expiry: "Fecha de vencimiento inválida"
+
+# Payment methods
+payment_method.card: "Tarjeta de crédito/débito"
+payment_method.apple_pay: "Apple Pay"
+payment_method.google_pay: "Google Pay"
+payment_method.paypal: "PayPal"
+
+# Subscription
+subscription.trial_days: "Prueba de {count} días"
+subscription.monthly: "Mensual"
+subscription.yearly: "Anual"
+subscription.cancel: "Cancelar suscripción"
+subscription.renews_on: "Se renueva el {date}"
+
+# Common
+common.loading: "Cargando..."
+common.submit: "Enviar"
+common.cancel: "Cancelar"
+common.confirm: "Confirmar"
+common.close: "Cerrar"
